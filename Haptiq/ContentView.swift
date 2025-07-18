@@ -31,7 +31,7 @@ struct ContentView: View {
                         } else {
                             Text("Ready to record")
                                 .foregroundStyle(.gray)
-                                .padding(.vertical, 6)
+                                .padding(6)
                                 .background(.gray.opacity(0.08), in: .capsule)
                         }
                         

@@ -5,9 +5,6 @@ struct PatternGraphView: View {
     let pattern: [HapticsEvent]
     var body: some View {
         VStack {
-            Text("Pattern Graph")
-                .font(.title)
-                .padding()
             if pattern.isEmpty {
                 Text("No pattern data available.")
             } else {
@@ -37,18 +34,19 @@ struct PatternGraphView: View {
                 .chartXAxisLabel("Time (s)")
                 .frame(height: 240)
                 .padding()
-                HStack(spacing: 0) {
+                HStack(spacing: 8) {
                     Text("Sharpness: 0")
                         .font(.caption)
                     LinearGradient(
                         gradient: Gradient(colors: [.blue, .purple, .red]),
                         startPoint: .leading, endPoint: .trailing
                     )
-                    .frame(width: 60, height: 10)
+                    .frame(height: 10)
                     .cornerRadius(5)
                     Text("1")
                         .font(.caption)
                 }
+                .padding(.horizontal, 32)
             }
             Spacer()
         }
