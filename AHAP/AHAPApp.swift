@@ -6,9 +6,12 @@ import SwiftUI
 
 @main
 struct AHAPApp: App {
+    @StateObject var uiFeedbackManager = UIFeedbackManager()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(uiFeedbackManager)
         }
     }
 }

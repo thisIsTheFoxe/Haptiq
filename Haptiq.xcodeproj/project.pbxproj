@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D526CF752E2A58D90057A4C3 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF742E2A58D90057A4C3 /* ShareSheet.swift */; };
+		D526CF792E2A648F0057A4C3 /* HapticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF782E2A648F0057A4C3 /* HapticsEvent.swift */; };
+		D526CF7B2E2A65780057A4C3 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF7A2E2A65780057A4C3 /* ContentViewModel.swift */; };
 		D5F153402BC4F47C0059AACE /* AHAPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1533F2BC4F47C0059AACE /* AHAPApp.swift */; };
 		D5F153422BC4F47C0059AACE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F153412BC4F47C0059AACE /* ContentView.swift */; };
 		D5F153442BC4F47E0059AACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F153432BC4F47E0059AACE /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 
 /* Begin PBXFileReference section */
 		D526CF742E2A58D90057A4C3 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		D526CF782E2A648F0057A4C3 /* HapticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsEvent.swift; sourceTree = "<group>"; };
+		D526CF7A2E2A65780057A4C3 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		D5F1533C2BC4F47C0059AACE /* Haptiq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haptiq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5F1533F2BC4F47C0059AACE /* AHAPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHAPApp.swift; sourceTree = "<group>"; };
 		D5F153412BC4F47C0059AACE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +61,8 @@
 			children = (
 				D5F1533F2BC4F47C0059AACE /* AHAPApp.swift */,
 				D5F1534D2BC4F5480059AACE /* UIFeedbackManager.swift */,
+				D526CF782E2A648F0057A4C3 /* HapticsEvent.swift */,
+				D526CF7A2E2A65780057A4C3 /* ContentViewModel.swift */,
 				D5F153412BC4F47C0059AACE /* ContentView.swift */,
 				D526CF742E2A58D90057A4C3 /* ShareSheet.swift */,
 				D5F153432BC4F47E0059AACE /* Assets.xcassets */,
@@ -145,6 +151,8 @@
 			files = (
 				D5F1534E2BC4F5480059AACE /* UIFeedbackManager.swift in Sources */,
 				D5F153422BC4F47C0059AACE /* ContentView.swift in Sources */,
+				D526CF7B2E2A65780057A4C3 /* ContentViewModel.swift in Sources */,
+				D526CF792E2A648F0057A4C3 /* HapticsEvent.swift in Sources */,
 				D5F153402BC4F47C0059AACE /* AHAPApp.swift in Sources */,
 				D526CF752E2A58D90057A4C3 /* ShareSheet.swift in Sources */,
 			);
