@@ -5,6 +5,7 @@
 import SwiftUI
 import CoreHaptics
 import UniformTypeIdentifiers
+import Charts
 
 struct ContentView: View {
     @StateObject private var viewModel = ContentViewModel()
@@ -157,6 +158,14 @@ struct ContentView: View {
                                 viewModel.exportPattern()
                             } label: {
                                 Label("Export", systemImage: "square.and.arrow.up")
+                                    .font(.body.bold())
+                            }
+                            .buttonStyle(.bordered)
+                        }
+                        
+                        if !viewModel.recordings.isEmpty && viewModel.recordingStartTime == nil {
+                            NavigationLink(destination: PatternGraphView(pattern: viewModel.recordings)) {
+                                Label("Show Pattern Graph", systemImage: "waveform.path.ecg")
                                     .font(.body.bold())
                             }
                             .buttonStyle(.bordered)
