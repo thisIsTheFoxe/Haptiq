@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D5219E492E2A73BD008ADFF4 /* HaptiQ_Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = D5219E482E2A73BD008ADFF4 /* HaptiQ_Icon.icon */; };
 		D526CF752E2A58D90057A4C3 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF742E2A58D90057A4C3 /* ShareSheet.swift */; };
 		D526CF792E2A648F0057A4C3 /* HapticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF782E2A648F0057A4C3 /* HapticsEvent.swift */; };
 		D526CF7B2E2A65780057A4C3 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF7A2E2A65780057A4C3 /* ContentViewModel.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D5219E482E2A73BD008ADFF4 /* HaptiQ_Icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = HaptiQ_Icon.icon; sourceTree = "<group>"; };
 		D526CF742E2A58D90057A4C3 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		D526CF782E2A648F0057A4C3 /* HapticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsEvent.swift; sourceTree = "<group>"; };
 		D526CF7A2E2A65780057A4C3 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				D5F153412BC4F47C0059AACE /* ContentView.swift */,
 				D526CF742E2A58D90057A4C3 /* ShareSheet.swift */,
 				D5F153432BC4F47E0059AACE /* Assets.xcassets */,
+				D5219E482E2A73BD008ADFF4 /* HaptiQ_Icon.icon */,
 				D5F153452BC4F47E0059AACE /* Preview Content */,
 				D526CF7C2E2A67A70057A4C3 /* PatternGraphView.swift */,
 			);
@@ -140,6 +143,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5219E492E2A73BD008ADFF4 /* HaptiQ_Icon.icon in Resources */,
 				D5F153472BC4F47E0059AACE /* Preview Assets.xcassets in Resources */,
 				D5F153442BC4F47E0059AACE /* Assets.xcassets in Resources */,
 			);
@@ -291,7 +295,7 @@
 		D5F1534B2BC4F47E0059AACE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = HaptiQ_Icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -320,7 +324,7 @@
 		D5F1534C2BC4F47E0059AACE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = HaptiQ_Icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
