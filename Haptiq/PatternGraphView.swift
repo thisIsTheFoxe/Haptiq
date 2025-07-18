@@ -1,6 +1,12 @@
 import SwiftUI
 import Charts
 
+extension Color {
+    static func red(_ value: Double) -> Color {
+        Color(red: value, green: 0, blue: 1 - value)
+    }
+}
+
 struct PatternGraphView: View {
     let pattern: [HapticsEvent]
     var body: some View {
@@ -10,7 +16,7 @@ struct PatternGraphView: View {
             } else {
                 Chart {
                     ForEach(pattern) { event in
-                        let color = Color.blue.mix(with: .red, by: Double(event.sharpness))
+                        let color = Color.red(Double(event.sharpness))
                         if let duration = event.duration {
                             RectangleMark(
                                 xStart: .value("Start", event.startTime),
@@ -38,7 +44,7 @@ struct PatternGraphView: View {
                     Text("Sharpness: 0")
                         .font(.caption)
                     LinearGradient(
-                        gradient: Gradient(colors: [.blue, .purple, .red]),
+                        gradient: Gradient(colors: [.red(0), .red(1)]),
                         startPoint: .leading, endPoint: .trailing
                     )
                     .frame(height: 10)
