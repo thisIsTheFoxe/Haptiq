@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D526CF752E2A58D90057A4C3 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF742E2A58D90057A4C3 /* ShareSheet.swift */; };
 		D5F153402BC4F47C0059AACE /* AHAPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1533F2BC4F47C0059AACE /* AHAPApp.swift */; };
 		D5F153422BC4F47C0059AACE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F153412BC4F47C0059AACE /* ContentView.swift */; };
 		D5F153442BC4F47E0059AACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F153432BC4F47E0059AACE /* Assets.xcassets */; };
 		D5F153472BC4F47E0059AACE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F153462BC4F47E0059AACE /* Preview Assets.xcassets */; };
+		D5F1534E2BC4F5480059AACE /* UIFeedbackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1534D2BC4F5480059AACE /* UIFeedbackManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D5F1533C2BC4F47C0059AACE /* AHAP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AHAP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D526CF742E2A58D90057A4C3 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		D5F1533C2BC4F47C0059AACE /* Haptiq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haptiq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5F1533F2BC4F47C0059AACE /* AHAPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHAPApp.swift; sourceTree = "<group>"; };
 		D5F153412BC4F47C0059AACE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D5F153432BC4F47E0059AACE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5F153462BC4F47E0059AACE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D5F1534D2BC4F5480059AACE /* UIFeedbackManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIFeedbackManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +47,7 @@
 		D5F1533D2BC4F47C0059AACE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D5F1533C2BC4F47C0059AACE /* AHAP.app */,
+				D5F1533C2BC4F47C0059AACE /* Haptiq.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -52,7 +56,9 @@
 			isa = PBXGroup;
 			children = (
 				D5F1533F2BC4F47C0059AACE /* AHAPApp.swift */,
+				D5F1534D2BC4F5480059AACE /* UIFeedbackManager.swift */,
 				D5F153412BC4F47C0059AACE /* ContentView.swift */,
+				D526CF742E2A58D90057A4C3 /* ShareSheet.swift */,
 				D5F153432BC4F47E0059AACE /* Assets.xcassets */,
 				D5F153452BC4F47E0059AACE /* Preview Content */,
 			);
@@ -70,9 +76,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D5F1533B2BC4F47C0059AACE /* AHAP */ = {
+		D5F1533B2BC4F47C0059AACE /* Haptiq */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D5F1534A2BC4F47E0059AACE /* Build configuration list for PBXNativeTarget "AHAP" */;
+			buildConfigurationList = D5F1534A2BC4F47E0059AACE /* Build configuration list for PBXNativeTarget "Haptiq" */;
 			buildPhases = (
 				D5F153382BC4F47C0059AACE /* Sources */,
 				D5F153392BC4F47C0059AACE /* Frameworks */,
@@ -82,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = AHAP;
+			name = Haptiq;
 			productName = AHAP;
-			productReference = D5F1533C2BC4F47C0059AACE /* AHAP.app */;
+			productReference = D5F1533C2BC4F47C0059AACE /* Haptiq.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D5F153372BC4F47B0059AACE /* Build configuration list for PBXProject "AHAP" */;
+			buildConfigurationList = D5F153372BC4F47B0059AACE /* Build configuration list for PBXProject "Haptiq" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D5F1533B2BC4F47C0059AACE /* AHAP */,
+				D5F1533B2BC4F47C0059AACE /* Haptiq */,
 			);
 		};
 /* End PBXProject section */
@@ -137,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5F1534E2BC4F5480059AACE /* UIFeedbackManager.swift in Sources */,
 				D5F153422BC4F47C0059AACE /* ContentView.swift in Sources */,
 				D5F153402BC4F47C0059AACE /* AHAPApp.swift in Sources */,
+				D526CF752E2A58D90057A4C3 /* ShareSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,7 +280,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AHAP/Preview Content\"";
-				DEVELOPMENT_TEAM = ZVL569ZC44;
+				DEVELOPMENT_TEAM = E3BNAMEWTS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -280,6 +288,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,7 +310,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"AHAP/Preview Content\"";
-				DEVELOPMENT_TEAM = ZVL569ZC44;
+				DEVELOPMENT_TEAM = E3BNAMEWTS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -309,6 +318,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -325,7 +335,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D5F153372BC4F47B0059AACE /* Build configuration list for PBXProject "AHAP" */ = {
+		D5F153372BC4F47B0059AACE /* Build configuration list for PBXProject "Haptiq" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5F153482BC4F47E0059AACE /* Debug */,
@@ -334,7 +344,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D5F1534A2BC4F47E0059AACE /* Build configuration list for PBXNativeTarget "AHAP" */ = {
+		D5F1534A2BC4F47E0059AACE /* Build configuration list for PBXNativeTarget "Haptiq" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D5F1534B2BC4F47E0059AACE /* Debug */,
