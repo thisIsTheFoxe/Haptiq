@@ -5,7 +5,7 @@
 import SwiftUI
 
 @main
-struct AHAPApp: App {
+struct HaptiqApp: App {
     @StateObject var uiFeedbackManager = UIFeedbackManager()
     
     var body: some Scene {

@@ -11,7 +11,7 @@
 		D526CF792E2A648F0057A4C3 /* HapticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF782E2A648F0057A4C3 /* HapticsEvent.swift */; };
 		D526CF7B2E2A65780057A4C3 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF7A2E2A65780057A4C3 /* ContentViewModel.swift */; };
 		D526CF7D2E2A67A70057A4C3 /* PatternGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF7C2E2A67A70057A4C3 /* PatternGraphView.swift */; };
-		D5F153402BC4F47C0059AACE /* AHAPApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1533F2BC4F47C0059AACE /* AHAPApp.swift */; };
+		D5F153402BC4F47C0059AACE /* HaptiqApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1533F2BC4F47C0059AACE /* HaptiqApp.swift */; };
 		D5F153422BC4F47C0059AACE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F153412BC4F47C0059AACE /* ContentView.swift */; };
 		D5F153442BC4F47E0059AACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F153432BC4F47E0059AACE /* Assets.xcassets */; };
 		D5F153472BC4F47E0059AACE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F153462BC4F47E0059AACE /* Preview Assets.xcassets */; };
@@ -24,7 +24,7 @@
 		D526CF7A2E2A65780057A4C3 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		D526CF7C2E2A67A70057A4C3 /* PatternGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternGraphView.swift; sourceTree = "<group>"; };
 		D5F1533C2BC4F47C0059AACE /* Haptiq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haptiq.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		D5F1533F2BC4F47C0059AACE /* AHAPApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHAPApp.swift; sourceTree = "<group>"; };
+		D5F1533F2BC4F47C0059AACE /* HaptiqApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaptiqApp.swift; sourceTree = "<group>"; };
 		D5F153412BC4F47C0059AACE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D5F153432BC4F47E0059AACE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5F153462BC4F47E0059AACE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		D5F153332BC4F47B0059AACE = {
 			isa = PBXGroup;
 			children = (
-				D5F1533E2BC4F47C0059AACE /* AHAP */,
+				D5F1533E2BC4F47C0059AACE /* Haptiq */,
 				D5F1533D2BC4F47C0059AACE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,10 +58,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D5F1533E2BC4F47C0059AACE /* AHAP */ = {
+		D5F1533E2BC4F47C0059AACE /* Haptiq */ = {
 			isa = PBXGroup;
 			children = (
-				D5F1533F2BC4F47C0059AACE /* AHAPApp.swift */,
+				D5F1533F2BC4F47C0059AACE /* HaptiqApp.swift */,
 				D5F1534D2BC4F5480059AACE /* UIFeedbackManager.swift */,
 				D526CF782E2A648F0057A4C3 /* HapticsEvent.swift */,
 				D526CF7A2E2A65780057A4C3 /* ContentViewModel.swift */,
@@ -71,7 +71,7 @@
 				D5F153452BC4F47E0059AACE /* Preview Content */,
 				D526CF7C2E2A67A70057A4C3 /* PatternGraphView.swift */,
 			);
-			path = AHAP;
+			path = Haptiq;
 			sourceTree = "<group>";
 		};
 		D5F153452BC4F47E0059AACE /* Preview Content */ = {
@@ -110,7 +110,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 2600;
 				TargetAttributes = {
 					D5F1533B2BC4F47C0059AACE = {
 						CreatedOnToolsVersion = 15.3;
@@ -157,7 +157,7 @@
 				D526CF7B2E2A65780057A4C3 /* ContentViewModel.swift in Sources */,
 				D526CF792E2A648F0057A4C3 /* HapticsEvent.swift in Sources */,
 				D526CF7D2E2A67A70057A4C3 /* PatternGraphView.swift in Sources */,
-				D5F153402BC4F47C0059AACE /* AHAPApp.swift in Sources */,
+				D5F153402BC4F47C0059AACE /* HaptiqApp.swift in Sources */,
 				D526CF752E2A58D90057A4C3 /* ShareSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -200,6 +200,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = E3BNAMEWTS;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -223,6 +224,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -263,6 +265,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = E3BNAMEWTS;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -279,6 +282,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -291,8 +295,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"AHAP/Preview Content\"";
-				DEVELOPMENT_TEAM = E3BNAMEWTS;
+				DEVELOPMENT_ASSET_PATHS = "\"Haptiq/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -306,7 +309,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.titf.AHAP;
+				PRODUCT_BUNDLE_IDENTIFIER = me.thisisthefoxe.Haptiq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -321,8 +324,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"AHAP/Preview Content\"";
-				DEVELOPMENT_TEAM = E3BNAMEWTS;
+				DEVELOPMENT_ASSET_PATHS = "\"Haptiq/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -336,7 +338,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = me.titf.AHAP;
+				PRODUCT_BUNDLE_IDENTIFIER = me.thisisthefoxe.Haptiq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

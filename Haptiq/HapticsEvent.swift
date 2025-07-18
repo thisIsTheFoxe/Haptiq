@@ -16,7 +16,7 @@ struct HapticsEvent: Identifiable {
     
     var shortDescription: String {
         ">\(String(format: "%.2f", startTime))s"
-        + " \(duration.flatMap { " - \(String(format: "%.2f", $0))s" } ?? "")"
+        + "\(duration.flatMap { " - \(String(format: "%.2f", $0))s" } ?? "")"
         + " <> Integrity: \(intensity), Sharpness: \(sharpness)"
     }
     

@@ -34,6 +34,9 @@ struct ContentView: View {
                                 .padding(.vertical, 6)
                                 .background(.gray.opacity(0.08), in: .capsule)
                         }
+                        
+                        Spacer()
+                        
                         Button {
                             viewModel.handleRecordButton()
                         } label: {
@@ -44,7 +47,6 @@ struct ContentView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(viewModel.recordingStartTime == nil ? .accentColor : .red)
-                        Spacer()
                     }
                     .animation(.easeInOut, value: viewModel.recordingStartTime)
                     .padding(.bottom, 6)
@@ -108,8 +110,8 @@ struct ContentView: View {
                                     .updating($isContinuouslyPlaying) { (_, isTapped, _) in
                                         isTapped = true
                                     })
-                                .onChange(of: isContinuouslyPlaying) { newValue in
-                                    if newValue {
+                                .onChange(of: isContinuouslyPlaying) {
+                                    if isContinuouslyPlaying {
                                         manager.startPlayingContinously(intensity: viewModel.intensity, sharpness: viewModel.sharpness)
                                         viewModel.startContinuousIfRecording()
                                     } else {
@@ -178,7 +180,7 @@ struct ContentView: View {
             }
             .padding(.horizontal)
             .shareSheet(item: $viewModel.exportURL)
-            .navigationTitle("AHAP Tester")
+            .navigationTitle("Haptiq")
             // File importer to import AHAP files
             .fileImporter(
                 isPresented: $viewModel.isImporting,
