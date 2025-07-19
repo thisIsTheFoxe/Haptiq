@@ -200,7 +200,7 @@ struct ContentView: View {
                 }
             // Toolbar with import button
                 .toolbar {
-                    ToolbarItem(placement: .principal) {
+                    ToolbarItem(placement: .secondaryAction) {
                         Button {
                             viewModel.isImporting = true
                         } label: {
