@@ -86,14 +86,11 @@ class ContentViewModel: ObservableObject {
         case .success(let urls):
             if let url = urls.first {
                 do {
+                    guard url.startAccessingSecurityScopedResource() else { return }
                     let data = try Data(contentsOf: url)
-                    let jsonObject = try JSONSerialization.jsonObject(with: data)
-                    if let dict = jsonObject as? [String: Any] {
-                        let importedEvents = try HapticsEvent.parseAHAPDictionary(dict)
-                        recordings = importedEvents
-                    } else {
-                        throw NSError(domain: "AHAPImport", code: 1, userInfo: [NSLocalizedDescriptionKey: "Invalid AHAP format"])
-                    }
+                    url.stopAccessingSecurityScopedResource()
+                    let ahapDTO = try JSONDecoder().decode(AHAPPatternDTO.self, from: data)
+                    recordings = ahapDTO.pattern.map { HapticsEvent.fromDTO($0.event) }
                 } catch {
                     importError = error
                 }

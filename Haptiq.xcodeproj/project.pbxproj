@@ -12,6 +12,7 @@
 		D526CF792E2A648F0057A4C3 /* HapticsEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF782E2A648F0057A4C3 /* HapticsEvent.swift */; };
 		D526CF7B2E2A65780057A4C3 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF7A2E2A65780057A4C3 /* ContentViewModel.swift */; };
 		D526CF7D2E2A67A70057A4C3 /* PatternGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D526CF7C2E2A67A70057A4C3 /* PatternGraphView.swift */; };
+		D534A0B42E2BBC3000853E29 /* AHAPPatternDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D534A0B32E2BBC3000853E29 /* AHAPPatternDTO.swift */; };
 		D5F153402BC4F47C0059AACE /* HaptiqApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F1533F2BC4F47C0059AACE /* HaptiqApp.swift */; };
 		D5F153422BC4F47C0059AACE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F153412BC4F47C0059AACE /* ContentView.swift */; };
 		D5F153442BC4F47E0059AACE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5F153432BC4F47E0059AACE /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 		D526CF782E2A648F0057A4C3 /* HapticsEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsEvent.swift; sourceTree = "<group>"; };
 		D526CF7A2E2A65780057A4C3 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		D526CF7C2E2A67A70057A4C3 /* PatternGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatternGraphView.swift; sourceTree = "<group>"; };
+		D534A0B32E2BBC3000853E29 /* AHAPPatternDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AHAPPatternDTO.swift; sourceTree = "<group>"; };
 		D5F1533C2BC4F47C0059AACE /* Haptiq.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Haptiq.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5F1533F2BC4F47C0059AACE /* HaptiqApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HaptiqApp.swift; sourceTree = "<group>"; };
 		D5F153412BC4F47C0059AACE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				D526CF782E2A648F0057A4C3 /* HapticsEvent.swift */,
 				D526CF7A2E2A65780057A4C3 /* ContentViewModel.swift */,
 				D5F153412BC4F47C0059AACE /* ContentView.swift */,
+				D534A0B32E2BBC3000853E29 /* AHAPPatternDTO.swift */,
 				D526CF742E2A58D90057A4C3 /* ShareSheet.swift */,
 				D5F153432BC4F47E0059AACE /* Assets.xcassets */,
 				D5219E482E2A73BD008ADFF4 /* HaptiQ_Icon.icon */,
@@ -160,6 +163,7 @@
 				D5F153422BC4F47C0059AACE /* ContentView.swift in Sources */,
 				D526CF7B2E2A65780057A4C3 /* ContentViewModel.swift in Sources */,
 				D526CF792E2A648F0057A4C3 /* HapticsEvent.swift in Sources */,
+				D534A0B42E2BBC3000853E29 /* AHAPPatternDTO.swift in Sources */,
 				D526CF7D2E2A67A70057A4C3 /* PatternGraphView.swift in Sources */,
 				D5F153402BC4F47C0059AACE /* HaptiqApp.swift in Sources */,
 				D526CF752E2A58D90057A4C3 /* ShareSheet.swift in Sources */,
