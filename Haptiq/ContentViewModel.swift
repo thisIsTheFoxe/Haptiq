@@ -1,3 +1,10 @@
+//
+//  ContentViewModel.swift
+//  Haptiq
+//
+//  Created by Henry on 19/07/2025.
+//
+
 import Foundation
 import CoreHaptics
 import UniformTypeIdentifiers
@@ -54,7 +61,7 @@ class ContentViewModel: ObservableObject {
     }
 
     // MARK: - Play & Export
-    func playPattern(_ manager: UIFeedbackManager) {
+    func playPattern(_ manager: FeedbackManager) {
         do {
             let pattern = try CHHapticPattern(events: recordings.map { $0.toCHHapticEvent() }, parameters: [])
             manager.playPattern(pattern)

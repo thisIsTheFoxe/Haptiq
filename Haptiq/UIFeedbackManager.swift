@@ -1,28 +1,24 @@
 //
-//  Copyright © 2024 SquareOne. All rights reserved.
+//  UIFeedbackManager.swift
+//  Haptiq
+//
+//  Created by Henry on 19/07/2025.
 //
 
 import Foundation
-import UIKit
 import CoreHaptics
 
-enum AHAPPattern: String {
-    case tickSmall = "tick-small",
-         tickGreen = "tick-green",
-         statusTick = "status-tick",
-         laptopTick = "laptop-tick"
-    case success, logout
-    case cardSuccess = "card-success"
-    case tap, loading
-    case soft
-    
-    var url: URL? {
-        Bundle.main.url(forResource: rawValue, withExtension: "ahap")
-    }
+protocol FeedbackManagerProtocol: ObservableObject {
+    func stop(completionHandler: ((Error?) -> Void)?)
+    func start() throws
+    func startPlayingContinously(intensity: Float, sharpness: Float)
+    func stopPlayingContinously()
+    func playInstamty(intensity: Float, sharpness: Float)
+    func playPattern(_ pattern: CHHapticPattern)
 }
 
-class UIFeedbackManager: ObservableObject {
-    
+@available(macOS, unavailable)
+class UIFeedbackManager: FeedbackManagerProtocol {
     
     private let hapticEngine: CHHapticEngine?
     var needsToRestart = false
@@ -147,3 +143,20 @@ class UIFeedbackManager: ObservableObject {
     }
 }
 
+#if os(macOS)
+import Foundation
+class DummyFeedbackManager: FeedbackManagerProtocol {
+    func stop(completionHandler: ((Error?) -> Void)?) {}
+    func start() throws {}
+    func startPlayingContinously(intensity: Float, sharpness: Float) {}
+    func stopPlayingContinously() {}
+    func playInstamty(intensity: Float, sharpness: Float) {}
+    func playPattern(_ pattern: CHHapticPattern) {}
+}
+#endif
+
+#if os(macOS)
+typealias FeedbackManager = DummyFeedbackManager
+#else
+typealias FeedbackManager = UIFeedbackManager
+#endif

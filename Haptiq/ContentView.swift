@@ -8,8 +8,10 @@ import UniformTypeIdentifiers
 import Charts
 
 struct ContentView: View {
+    @EnvironmentObject var manager: FeedbackManager
+    
     @StateObject private var viewModel = ContentViewModel()
-    @EnvironmentObject var manager: UIFeedbackManager
+    
     @GestureState private var isContinuouslyPlaying = false
     
     var body: some View {
@@ -198,7 +200,7 @@ struct ContentView: View {
                 }
             // Toolbar with import button
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
+                    ToolbarItem(placement: .principal) {
                         Button {
                             viewModel.isImporting = true
                         } label: {
@@ -212,5 +214,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environmentObject(UIFeedbackManager())
+        .environmentObject(FeedbackManager())
 }
