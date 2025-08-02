@@ -9,10 +9,18 @@ import CoreHaptics
 
 struct HapticsEvent: Identifiable {
     let id: UUID = UUID()
-    let startTime: TimeInterval
-    let duration: TimeInterval?
-    let intensity: Float
-    let sharpness: Float
+    var startTime: TimeInterval
+    var duration: TimeInterval?
+    var intensity: Float
+    var sharpness: Float
+    
+    var endTime: TimeInterval {
+        startTime + (duration ?? 0)
+    }
+    
+    var targetTimeRange: ClosedRange<TimeInterval> {
+        (startTime - 0.5)...(endTime + 0.5)
+    }
     
     var shortDescription: String {
         ">\(String(format: "%.2f", startTime))s"
@@ -36,3 +44,4 @@ struct HapticsEvent: Identifiable {
                      sharpness: Float(keyedParameters[.hapticSharpness] ?? 0))
     }
 }
+

@@ -168,7 +168,7 @@ struct ContentView: View {
                         }
                         
                         if !viewModel.recordings.isEmpty && viewModel.recordingStartTime == nil {
-                            NavigationLink(destination: PatternGraphView(pattern: viewModel.recordings)) {
+                            NavigationLink(destination: PatternGraphView(pattern: $viewModel.recordings)) {
                                 Label("Show Pattern Graph", systemImage: "waveform.path.ecg")
                                     .font(.body.bold())
                             }
