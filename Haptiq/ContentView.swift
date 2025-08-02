@@ -161,7 +161,7 @@ struct ContentView: View {
                             Button {
                                 viewModel.exportPattern()
                             } label: {
-                                Label("Export", systemImage: "square.and.arrow.up")
+                                Label("Save", systemImage: "square.and.arrow.up")
                                     .font(.body.bold())
                             }
                             .buttonStyle(.bordered)
@@ -200,11 +200,11 @@ struct ContentView: View {
                 }
             // Toolbar with import button
                 .toolbar {
-                    ToolbarItem(placement: .secondaryAction) {
+                    ToolbarItem {
                         Button {
                             viewModel.isImporting = true
                         } label: {
-                            Label("Import", systemImage: "square.and.arrow.down")
+                            Label("Open", systemImage: "folder")
                         }
                     }
                 }
