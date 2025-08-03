@@ -21,31 +21,7 @@ struct PatternGraphView: View {
             } else {
                 Chart {
                     ForEach(pattern) { event in
-                        let color = Color.red(Double(event.sharpness))
-                        let startTime = event.startTime + (event.id == selectedEvent?.id ? (translation?.width ?? 0) : 0)
-                        let intensity = event.intensity + Float(event.id == selectedEvent?.id ? (translation?.height ?? 0) : 0)
-                        
-                        if let duration = event.duration {
-                            let endTime = startTime + (selectedEvent?.id == event.id ? (duration * (durationTranslation ?? 1)) : duration)
-                            
-                            RectangleMark(
-                                xStart: .value("Start", startTime),
-                                xEnd: .value("End", endTime),
-                                yStart: .value("Zero", 0),
-                                yEnd: .value("Intensity", intensity)
-                            )
-                            .zIndex(selectedEvent?.id == event.id ? 2 : 0)
-                            .foregroundStyle(color)
-                            .opacity(selectedEvent?.id == event.id || selectedEvent == nil ? 0.75 : 0.5)
-                        } else {
-                            PointMark(
-                                x: .value("Time", startTime),
-                                y: .value("Intensity", intensity)
-                            )
-                            .zIndex(selectedEvent?.id == event.id ? 2 : 1)
-                            .foregroundStyle(color)
-                            .opacity(selectedEvent?.id == event.id || selectedEvent == nil ? 1 : 0.5)
-                        }
+                        PatternGraphEventMark(event: event, selectedEvent: selectedEvent, translation: translation, durationTranslation: durationTranslation)
                     }
                 }
                 .chartYScale(domain: 0...1)
@@ -221,6 +197,41 @@ struct PatternGraphView: View {
         pattern[eventIx].duration = targetDuration
         self.selectedEvent?.duration = targetDuration
         durationTranslation = nil
+    }
+}
+
+private struct PatternGraphEventMark: ChartContent {
+    let event: HapticsEvent
+    let selectedEvent: HapticsEvent?
+    let translation: CGSize?
+    let durationTranslation: CGFloat?
+    
+    var body: some ChartContent {
+        let color = Color.red(Double(event.sharpness))
+        let startTime = event.startTime + (event.id == selectedEvent?.id ? (translation?.width ?? 0) : 0)
+        let intensity = event.intensity + Float(event.id == selectedEvent?.id ? (translation?.height ?? 0) : 0)
+        
+        if let duration = event.duration {
+            let endTime = startTime + (selectedEvent?.id == event.id ? (duration * (durationTranslation ?? 1)) : duration)
+            
+            RectangleMark(
+                xStart: .value("Start", startTime),
+                xEnd: .value("End", endTime),
+                yStart: .value("Zero", 0),
+                yEnd: .value("Intensity", intensity)
+            )
+            .zIndex(selectedEvent?.id == event.id ? 2 : 0)
+            .foregroundStyle(color)
+            .opacity(selectedEvent?.id == event.id || selectedEvent == nil ? 0.75 : 0.5)
+        } else {
+            PointMark(
+                x: .value("Time", startTime),
+                y: .value("Intensity", intensity)
+            )
+            .zIndex(selectedEvent?.id == event.id ? 2 : 1)
+            .foregroundStyle(color)
+            .opacity(selectedEvent?.id == event.id || selectedEvent == nil ? 1 : 0.5)
+        }
     }
 }
 
