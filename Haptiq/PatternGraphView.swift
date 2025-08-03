@@ -93,6 +93,20 @@ struct PatternGraphView: View {
                             })
                     }
                 }
+                .focusable()
+                .onKeyPress(action: { press in
+                    guard selectedEvent != nil else { return .ignored }
+                    let delta = press.modifiers.contains(.shift) ? 0.1 : 0.01
+                    switch press.key {
+                    case .upArrow: Task { editEventKeyPress(intensity: delta) }
+                    case .downArrow: Task { editEventKeyPress(intensity: -delta) }
+                    case .leftArrow: Task { editEventKeyPress(startTime: -delta) }
+                    case .rightArrow: Task { editEventKeyPress(startTime: delta) }
+                    default: return .ignored
+                    }
+                    
+                    return .handled
+                })
                 .frame(height: 240)
                 .padding()
                 
@@ -149,10 +163,22 @@ struct PatternGraphView: View {
                     self.selectedEvent = nil
                 }
                 .padding(.top)
+                .keyboardShortcut(.delete, modifiers: [])
             }
             Spacer()
         }
         .navigationTitle("Pattern Graph")
+    }
+    
+    func editEventKeyPress(startTime: CGFloat = 0, intensity: CGFloat = 0) {
+        guard let selectedEvent,
+              let eventIx = pattern.firstIndex(where: { $0.id == selectedEvent.id }) else {
+            return
+        }
+
+        pattern[eventIx].startTime = max(0, selectedEvent.startTime + startTime)
+        pattern[eventIx].intensity = max(0, min(1, selectedEvent.intensity + Float(intensity)))
+        self.selectedEvent = pattern[eventIx]
     }
     
     func clampTranslation(_ translation: CGSize, to event: HapticsEvent) -> CGSize {

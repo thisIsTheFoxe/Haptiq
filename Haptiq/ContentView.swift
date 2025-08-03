@@ -165,6 +165,7 @@ struct ContentView: View {
                                     .font(.body.bold())
                             }
                             .buttonStyle(.bordered)
+                            .keyboardShortcut(.init("s"))
                         }
                         
                         if !viewModel.recordings.isEmpty && viewModel.recordingStartTime == nil {
