@@ -62,34 +62,12 @@ struct PatternGraphView: View {
                                     translation = clampTranslation(value.translation, to: selectedEvent)
                                 }
                                 .onEnded { value in
-                                    if let selectedEvent, value.translation.diagonal > 0 {
-                                        if let translation {
-                                            guard let eventIx = pattern.firstIndex(where: { $0.id == selectedEvent.id }) else { return }
-                                            pattern[eventIx].startTime += translation.width
-                                            pattern[eventIx].intensity += Float(translation.height)
-                                            
-                                            pattern[eventIx].startTime = max(0, pattern[eventIx].startTime)
-                                            pattern[eventIx].intensity = max(0, min(1, pattern[eventIx].intensity))
-                                            self.translation = nil
-                                            self.selectedEvent = pattern[eventIx]
-                                        } else {
-                                            self.selectedEvent = nil
-                                        }
-                                    } else {
-                                        guard let (time, intensity) = getChartCorrdinates(inGeometry: geometry, chartProxy: proxy, value: value) else { return }
-                                        selectedEvent = getEventForCorrdinates(time: time, intensity: intensity)
-                                    }
+                                    handleDragEnded(value: value, geometry: geometry, proxy: proxy)
                                 }
                             ).simultaneousGesture(MagnifyGesture().onChanged { value in
                                 durationTranslation = value.magnification
                             }.onEnded { value in
-                                guard let selectedEvent,
-                                      let eventIx = pattern.firstIndex(where: { $0.id == selectedEvent.id }),
-                                      let duration = selectedEvent.duration else { return }
-                                let targetDuration = max(0.05, duration * value.magnification)
-                                pattern[eventIx].duration = targetDuration
-                                self.selectedEvent?.duration = targetDuration
-                                durationTranslation = nil
+                                handleMagnifyEnded(value: value)
                             })
                     }
                 }
@@ -213,6 +191,36 @@ struct PatternGraphView: View {
                     abs(lhs.intensity - intensity) < abs(rhs.intensity - intensity)
                 }
             }
+    }
+
+    func handleDragEnded(value: DragGesture.Value, geometry: GeometryProxy, proxy: ChartProxy) {
+        if let selectedEvent, value.translation.diagonal > 0 {
+            if let translation {
+                guard let eventIx = pattern.firstIndex(where: { $0.id == selectedEvent.id }) else { return }
+                pattern[eventIx].startTime += translation.width
+                pattern[eventIx].intensity += Float(translation.height)
+                
+                pattern[eventIx].startTime = max(0, pattern[eventIx].startTime)
+                pattern[eventIx].intensity = max(0, min(1, pattern[eventIx].intensity))
+                self.translation = nil
+                self.selectedEvent = pattern[eventIx]
+            } else {
+                self.selectedEvent = nil
+            }
+        } else {
+            guard let (time, intensity) = getChartCorrdinates(inGeometry: geometry, chartProxy: proxy, value: value) else { return }
+            selectedEvent = getEventForCorrdinates(time: time, intensity: intensity)
+        }
+    }
+
+    func handleMagnifyEnded(value: MagnifyGesture.Value) {
+        guard let selectedEvent,
+              let eventIx = pattern.firstIndex(where: { $0.id == selectedEvent.id }),
+              let duration = selectedEvent.duration else { return }
+        let targetDuration = max(0.05, duration * value.magnification)
+        pattern[eventIx].duration = targetDuration
+        self.selectedEvent?.duration = targetDuration
+        durationTranslation = nil
     }
 }
 
