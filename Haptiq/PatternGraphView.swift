@@ -12,6 +12,7 @@ struct PatternGraphView: View {
     @State var selectedEvent: HapticsEvent?
     
     @State var translation: CGSize?
+    @State var durationTranslation: CGFloat?
     
     var body: some View {
         VStack {
@@ -25,12 +26,15 @@ struct PatternGraphView: View {
                         let intensity = event.intensity + Float(event.id == selectedEvent?.id ? (translation?.height ?? 0) : 0)
                         
                         if let duration = event.duration {
+                            let endTime = startTime + (selectedEvent?.id == event.id ? (duration * (durationTranslation ?? 1)) : duration)
+                            
                             RectangleMark(
                                 xStart: .value("Start", startTime),
-                                xEnd: .value("End", startTime + duration),
+                                xEnd: .value("End", endTime),
                                 yStart: .value("Zero", 0),
                                 yEnd: .value("Intensity", intensity)
                             )
+                            .zIndex(selectedEvent?.id == event.id ? 2 : 0)
                             .foregroundStyle(color)
                             .opacity(selectedEvent?.id == event.id || selectedEvent == nil ? 0.75 : 0.5)
                         } else {
@@ -38,7 +42,7 @@ struct PatternGraphView: View {
                                 x: .value("Time", startTime),
                                 y: .value("Intensity", intensity)
                             )
-                            .zIndex(1)
+                            .zIndex(selectedEvent?.id == event.id ? 2 : 1)
                             .foregroundStyle(color)
                             .opacity(selectedEvent?.id == event.id || selectedEvent == nil ? 1 : 0.5)
                         }
@@ -58,7 +62,7 @@ struct PatternGraphView: View {
                                     translation = clampTranslation(value.translation, to: selectedEvent)
                                 }
                                 .onEnded { value in
-                                    if let selectedEvent {
+                                    if let selectedEvent, value.translation.diagonal > 0 {
                                         if let translation {
                                             guard let eventIx = pattern.firstIndex(where: { $0.id == selectedEvent.id }) else { return }
                                             pattern[eventIx].startTime += translation.width
@@ -67,6 +71,7 @@ struct PatternGraphView: View {
                                             pattern[eventIx].startTime = max(0, pattern[eventIx].startTime)
                                             pattern[eventIx].intensity = max(0, min(1, pattern[eventIx].intensity))
                                             self.translation = nil
+                                            self.selectedEvent = pattern[eventIx]
                                         } else {
                                             self.selectedEvent = nil
                                         }
@@ -75,46 +80,75 @@ struct PatternGraphView: View {
                                         selectedEvent = getEventForCorrdinates(time: time, intensity: intensity)
                                     }
                                 }
-                            ).simultaneousGesture(TapGesture().onEnded {
-                                selectedEvent = nil
+                            ).simultaneousGesture(MagnifyGesture().onChanged { value in
+                                durationTranslation = value.magnification
+                            }.onEnded { value in
+                                guard let selectedEvent,
+                                      let eventIx = pattern.firstIndex(where: { $0.id == selectedEvent.id }),
+                                      let duration = selectedEvent.duration else { return }
+                                let targetDuration = max(0.05, duration * value.magnification)
+                                pattern[eventIx].duration = targetDuration
+                                self.selectedEvent?.duration = targetDuration
+                                durationTranslation = nil
                             })
                     }
                 }
                 .frame(height: 240)
                 .padding()
-                HStack(spacing: 8) {
-                    Text("Sharpness: 0")
-                        .font(.caption)
-                    LinearGradient(
-                        gradient: Gradient(colors: [.red(0), .red(1)]),
-                        startPoint: .leading, endPoint: .trailing
-                    )
-                    .frame(height: 50)
-                    .overlay {
-                        GeometryReader { geometry in
-                            Rectangle().fill(.clear).contentShape(Rectangle())
-                                .gesture(DragGesture(minimumDistance: 0)
-                                    .onChanged { value in
-                                        // get plot area coordiate from gesture location
-                                        guard let selectedEvent,
-                                              let eventIx = pattern.firstIndex(where: { $0.id == selectedEvent.id }) else { return }
-                                        let sharpness = value.location.x / geometry.size.width
-                                        pattern[eventIx].sharpness = Float(sharpness)
-                                    }
-                                )
+                
+                VStack(spacing: 8) {
+                    Text("Sharpness")
+                        .font(.subheadline)
+                    HStack {
+                        Text("0")
+                            .font(.caption)
+                        
+                        LinearGradient(
+                            gradient: Gradient(colors: [.red(0), .red(1)]),
+                            startPoint: .leading, endPoint: .trailing
+                        )
+                        .frame(height: 50)
+                        .overlay {
+                            GeometryReader { geometry in
+                                Rectangle().fill(.clear).contentShape(Rectangle())
+                                    .gesture(DragGesture(minimumDistance: 0)
+                                        .onChanged { value in
+                                            // get plot area coordiate from gesture location
+                                            guard let selectedEvent,
+                                                  let eventIx = pattern.firstIndex(where: { $0.id == selectedEvent.id }) else { return }
+                                            let sharpness = Float(value.location.x / geometry.size.width)
+                                            pattern[eventIx].sharpness = sharpness
+                                            self.selectedEvent?.sharpness = sharpness
+                                        }
+                                    )
+                            }
                         }
+                        .cornerRadius(5)
+                        
+                        Text("1")
+                            .font(.caption)
                     }
-                    .cornerRadius(5)
-                    Text("1")
-                        .font(.caption)
                 }
-                .padding(.horizontal, 32)
+                .padding(.horizontal, 16)
             }
             
-            if let selectedEvent, let translation {
-                Text("Start time: \(selectedEvent.startTime + translation.width)")
-                Text("Intensity: \(CGFloat(selectedEvent.intensity) + translation.height)")
+            if let selectedEvent {
+                Text("Start time: \(selectedEvent.startTime + (translation?.width ?? 0))")
+                Text("Intensity: \(CGFloat(selectedEvent.intensity) + (translation?.height ?? 0))")
                 Text("Sharpness: \(selectedEvent.sharpness)")
+                if let duration = selectedEvent.duration {
+                    Text("Duration: \(duration * (durationTranslation ?? 1))")
+                }
+                #if DEBUG
+                Text("Debug: \(translation.debugDescription)")
+                #endif
+                
+                Button("Remove selected event", role: .destructive) {
+                    guard let eventIx = pattern.firstIndex(where: { $0.id == selectedEvent.id }) else { return }
+                    pattern.remove(at: eventIx)
+                    self.selectedEvent = nil
+                }
+                .padding(.top)
             }
             Spacer()
         }
@@ -128,6 +162,7 @@ struct PatternGraphView: View {
         let maxWidth: CGFloat = 5
         return CGSize(
             width: min(max(translation.width * 0.1, minWidth), maxWidth),
+            // negative height as y = 0 is top edge but bottom in chart
             height: min(max(-translation.height * 0.01, minHeight), maxHeight)
         )
     }
@@ -152,5 +187,11 @@ struct PatternGraphView: View {
                     abs(lhs.intensity - intensity) < abs(rhs.intensity - intensity)
                 }
             }
+    }
+}
+
+extension CGSize {
+    var diagonal: CGFloat {
+        return sqrt(width * width + height * height)
     }
 }

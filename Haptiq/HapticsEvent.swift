@@ -19,7 +19,7 @@ struct HapticsEvent: Identifiable {
     }
     
     var targetTimeRange: ClosedRange<TimeInterval> {
-        (startTime - 0.5)...(endTime + 0.5)
+        (startTime - 0.2)...(endTime + 0.2)
     }
     
     var shortDescription: String {

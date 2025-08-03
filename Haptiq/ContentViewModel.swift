@@ -81,12 +81,32 @@ class ContentViewModel: ObservableObject {
                 try FileManager.default.removeItem(at: exportUrl)
             }
             try exportData.write(to: exportUrl)
+#if os(macOS)
+            guard let url = showSavePanel() else { return }
+            try FileManager.default.moveItem(at: exportUrl, to: url)
+#else
             self.exportURL = exportUrl
+#endif
         } catch {
             print(error)
         }
     }
 
+    #if os(macOS)
+    func showSavePanel() -> URL? {
+        let savePanel = NSSavePanel()
+        savePanel.allowedContentTypes = [.ahap]
+        savePanel.canCreateDirectories = true
+        savePanel.isExtensionHidden = false
+        savePanel.title = "Save your haptic file"
+        savePanel.message = "Choose a folder and a name"
+        savePanel.nameFieldLabel = "AHAP file name:"
+        
+        let response = savePanel.runModal()
+        return response == .OK ? savePanel.url : nil
+    }
+    #endif
+    
     // MARK: - Import
     func handleImportResult(_ result: Result<[URL], Error>) {
         switch result {
